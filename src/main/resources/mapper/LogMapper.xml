@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bngel.rcty.dao.LogDao">
+
+    <insert id="saveLog">
+        insert into rcty_log(`type`,`create_time`,`text`)
+        values (#{log.type}, now(), #{log.text});
+    </insert>
+
+    <delete id="deleteLogById">
+        delete from rcty_log where id = #{id};
+    </delete>
+
+    <select id="getLogById" resultType="cn.bngel.rcty.bean.Log">
+        select * from rcty_log where id = #{id};
+    </select>
+
+    <update id="updateLogById">
+        update rcty_log
+        <set>
+            <if test="log.type != null">type=#{log.type},</if>
+            <if test="log.text != null">email=#{log.text},</if>
+        </set>
+        where id = #{log.id};
+    </update>
+</mapper>
