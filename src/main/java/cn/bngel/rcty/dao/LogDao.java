@@ -13,7 +13,5 @@ public interface LogDao {
 
     Log getLogById(@Param("id") Long id);
 
-    Log login(@Param("account") String account, @Param("password") String password);
-
     Integer updateLogById(@Param("Log") Log Log);
 }

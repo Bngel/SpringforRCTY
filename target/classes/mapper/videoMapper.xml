@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bngel.rcty.dao.VideoDao">
+
+    <insert id="saveVideo">
+        insert into rcty_Video(`video_name`,`video_type`,`url`,`video_size`,`create_time`)
+        values (#{video.videoName}, #{video.videoType},#{video.url},#{video.videoSize},now());
+    </insert>
+
+    <delete id="deleteVideoById">
+        delete from rcty_video where id = #{id};
+    </delete>
+
+    <select id="getVideoById" resultType="cn.bngel.rcty.bean.Video">
+        select * from rcty_video where id = #{id};
+    </select>
+
+    <update id="updateVideoById">
+        update rcty_video
+        <set>
+            <if test="video.videoName != null">video_name=#{video.videoName},</if>
+            <if test="video.videoType != null">video_type=#{video.videoType},</if>
+            <if test="video.url != null">url=#{video.url},</if>
+            <if test="video.videoSize != null">video_size=#{video.videoSize},</if>
+        </set>
+        where id = #{video.id};
+    </update>
+</mapper>
