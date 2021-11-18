@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bngel.rcty.dao.ReplyDao">
+
+    <insert id="saveReply">
+        insert into rcty_reply(`title`,`text`,`type`)
+        values (#{reply.title}, #{reply.text},#{reply.type});
+    </insert>
+
+    <delete id="deleteReplyById">
+        delete from rcty_reply where id = #{id};
+    </delete>
+
+    <select id="getReplyById" resultType="cn.bngel.rcty.bean.Reply">
+        select * from rcty_reply where id = #{id};
+    </select>
+
+    <update id="updateReplyById">
+        update rcty_reply
+        <set>
+            <if test="reply.title != null">title=#{reply.title},</if>
+            <if test="reply.text != null">text=#{reply.text},</if>
+            <if test="reply.type != null">type=#{reply.type},</if>
+        </set>
+        where id = #{reply.id};
+    </update>
+</mapper>

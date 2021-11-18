@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface VideoDao {
 
-    Integer saveVideo(@Param("Video") Video video);
+    Integer saveVideo(@Param("video") Video video);
 
     Integer deleteVideoById(@Param("id") Long id);
 
