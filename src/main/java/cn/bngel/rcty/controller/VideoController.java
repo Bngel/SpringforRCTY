@@ -3,12 +3,14 @@ package cn.bngel.rcty.controller;
 import cn.bngel.rcty.bean.CommonResult;
 import cn.bngel.rcty.bean.Video;
 import cn.bngel.rcty.service.VideoService;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
+@Api(tags = "视频模块")
 public class VideoController {
 
     @Autowired
@@ -51,7 +53,7 @@ public class VideoController {
     public CommonResult getVideoById(@RequestParam("id") Long id) {
         Video video = videoService.getVideoById(id);
         if (video != null) {
-            return CommonResult.getSuccessResult();
+            return new CommonResult(CommonResult.SUCCESS_CODE, video, CommonResult.SUCCESS_MSG);
         }
         else {
             return CommonResult.getFailureResult();
