@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -72,6 +73,42 @@ public class VideoController {
         Video video = videoService.getVideoById(id);
         if (video != null) {
             return new CommonResult(CommonResult.SUCCESS_CODE, video, CommonResult.SUCCESS_MSG);
+        }
+        else {
+            return CommonResult.getFailureResult();
+        }
+    }
+
+    @ApiOperation(value = "查询指定类型视频")
+    @GetMapping("/video/{type}")
+    public CommonResult getVideosByType(@PathVariable("type") String type) {
+        List<Video> video = videoService.getVideosByType(type);
+        if (video != null) {
+            return new CommonResult(CommonResult.SUCCESS_CODE, video, CommonResult.SUCCESS_MSG);
+        }
+        else {
+            return CommonResult.getFailureResult();
+        }
+    }
+
+    @ApiOperation(value = "查询所有视频")
+    @GetMapping("/video/all")
+    public CommonResult getVideos() {
+        List<Video> video = videoService.getAllVideos();
+        if (video != null) {
+            return new CommonResult(CommonResult.SUCCESS_CODE, video, CommonResult.SUCCESS_MSG);
+        }
+        else {
+            return CommonResult.getFailureResult();
+        }
+    }
+
+    @ApiOperation(value = "查询时间段视频")
+    @GetMapping("/video/dates")
+    public CommonResult getVideosBetweenDates(@RequestParam("dateStart") String dateStart, @RequestParam("dateEnd") String dateEnd) {
+        List<Video> videos = videoService.getVideosBetweenDates(dateStart, dateEnd);
+        if (videos != null) {
+            return new CommonResult(CommonResult.SUCCESS_CODE, videos, CommonResult.SUCCESS_MSG);
         }
         else {
             return CommonResult.getFailureResult();

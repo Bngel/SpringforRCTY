@@ -27,4 +27,18 @@
         </set>
         where id = #{video.id};
     </update>
+
+    <select id="getVideosBetweenDates" resultType="cn.bngel.rcty.bean.Video">
+        <![CDATA[
+        select * from rcty_video where `create_time` >= #{dateStart} and `create_time` <= #{dateEnd};
+        ]]>
+    </select>
+
+    <select id="getAllVideos" resultType="cn.bngel.rcty.bean.Video">
+        select * from rcty_video;
+    </select>
+
+    <select id="getVideosByType" resultType="cn.bngel.rcty.bean.Video">
+        select * from rcty_video where `video_type` = #{type};
+    </select>
 </mapper>

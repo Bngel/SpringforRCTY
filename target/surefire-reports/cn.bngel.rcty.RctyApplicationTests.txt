@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: cn.bngel.rcty.RctyApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.699 s - in cn.bngel.rcty.RctyApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.76 s - in cn.bngel.rcty.RctyApplicationTests

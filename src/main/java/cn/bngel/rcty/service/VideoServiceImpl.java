@@ -6,6 +6,8 @@ import cn.bngel.rcty.dao.VideoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class VideoServiceImpl implements VideoService{
 
@@ -30,6 +32,19 @@ public class VideoServiceImpl implements VideoService{
     @Override
     public Video getVideoById(Long id) {
         return videoDao.getVideoById(id);
+    }
+
+    @Override
+    public List<Video> getVideosBetweenDates(String dateStart, String dateEnd){return videoDao.getVideosBetweenDates(dateStart, dateEnd);}
+
+    @Override
+    public List<Video> getAllVideos() {
+        return videoDao.getAllVideos();
+    }
+
+    @Override
+    public List<Video> getVideosByType(String type) {
+        return videoDao.getVideosByType(type);
     }
 
 }
